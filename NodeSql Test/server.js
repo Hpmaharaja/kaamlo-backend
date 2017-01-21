@@ -13,10 +13,10 @@ var connection = mysql.createConnection({
 connection.connect(function(err){
 if(!err)
 {
-    console.log("Database is connected ... nn");
+    console.log("Database is connected ");
 } else
 {
-    console.log("Error connecting database ... nn");
+    console.log("Error connecting database ");
 }
 });
 
