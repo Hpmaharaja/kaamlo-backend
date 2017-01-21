@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 
 var router=express.Router();
 
-
 router.route('/events')
         .get(function(req,res){
         connection.query('SELECT eName from kaamlo.events where eName="Test"', function(err, rows, fields) {
@@ -41,6 +40,7 @@ router.route('/events')
         })
 
         .post(function(req,res){
+        //parameter names will be adjusted later
         var event_name=req.body.name;
         var num_people=req.body.people;
         var post={
