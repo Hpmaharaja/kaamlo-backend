@@ -1,0 +1,14 @@
+{
+  "name": "kaamlo-login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Madhav Gharmalkar",
+  "license": "ISC",
+  "dependencies": {
+    "amazon-cognito-identity-js-node": "0.0.3"
+  }
+}
