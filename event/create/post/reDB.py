@@ -7,7 +7,11 @@ def lambda_handler(event, context):
     print(event)
     query=r.table('kaamloEvent').insert({
         'id':r.uuid(),
-        'name':event['name'],
+        'eventName':event['eventName'],
+        'start':event['start'],
+        'end':event['end'],
+        'goal':event['goal'],
+        'type':event['type'],
         'location':event['location']
         },return_changes=True)
     newId='"'+str(query.run(conn)['changes'][0]['new_val']['id'])+'"'
