@@ -3,6 +3,7 @@ import jwt
 import json
 import time
 
+
 from passlib.hash import pbkdf2_sha256
 import pymysql.cursors
 
@@ -60,7 +61,7 @@ def login_handler(event, context):
 
 
     except Exception as e:
-        raise_error(500, 'Internal server error')
+        return(e)
 
 def raise_error(code, message):
     error = {
