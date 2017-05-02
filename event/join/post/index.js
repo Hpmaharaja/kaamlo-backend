@@ -3,7 +3,7 @@
 var AWS = require("aws-sdk");
 AWS.config.update({ region: "us-west-2" });
 
-const tableName = "TotalEventInfo";
+const tableName = "fullAttendeeInfo";
 
 exports.handler = (event, context, callback) => {
 
@@ -20,7 +20,7 @@ exports.handler = (event, context, callback) => {
         if (err) {
             callback(err);
         } else {
-            callback(null, JSON.stringify({msg: "Successfully updated TotalEventInfo Table!"}));
+            callback(null, JSON.stringify({msg: "Successfully updated fullAttendeeInfo Table!"}));
         }
     });
 
