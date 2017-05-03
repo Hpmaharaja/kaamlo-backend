@@ -16,7 +16,8 @@ exports.handler = (event, context, callback) => {
       if (!err) {
         // console.log('The solution is: ', rows);
         console.log('Successfully inserted into eventInfo!');
-        callback(null, JSON.stringify({msg: "Successfully inserted into eventInfo Table!", data: rows}));
+        // callback(null, JSON.stringify({msg: "Successfully inserted into eventInfo Table!", data: rows}));
+        callback(null, rows);
       } else {
         console.log('Error while performing Query.');
         callback(null, JSON.stringify(err));
