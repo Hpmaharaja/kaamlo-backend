@@ -1,0 +1,11 @@
+{
+  "name": "get",
+  "version": "1.0.0",
+  "description": "getting all the friends from your friendslist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hpmaharaja",
+  "license": "ISC"
+}
