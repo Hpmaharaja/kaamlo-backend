@@ -1,27 +1,29 @@
 'use strict';
 
-var AWS = require("aws-sdk");
-AWS.config.update({ region: "us-west-2" });
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'kaamlo-db.cczywhkujcku.us-west-2.rds.amazonaws.com',
+  user     : 'hpmaharaja',
+  password : 'Radhe108!',
+  database : 'kaamlo_db'
+});
 
-const tableName = "TotalEventInfo";
+connection.connect();
 
 exports.handler = (event, context, callback) => {
 
-    let docClient = new AWS.DynamoDB.DocumentClient();
-    let params = {
-        TableName: tableName,
-        Item: {
-            "eventId": event.eventID,
-            "userId": event.userId
-        }
-    };
-
-    docClient.put(params, function(err, data) {
-        if (err) {
-            callback(err);
-        } else {
-            callback(null, JSON.stringify({msg: "Successfully updated TotalEventInfo Table!"}));
-        }
+    connection.query('SELECT * FROM attendeeInfo WHERE eventId=?',[event.eventId], function(err, rows, fields) {
+      if (!err) {
+        // console.log('The solution is: ', rows);
+        console.log('Successfully inserted into eventInfo!');
+        callback(null, JSON.stringify({msg: "Successfully inserted into eventInfo Table!", data: rows}));
+      } else {
+        console.log('Error while performing Query.');
+        callback(null, JSON.stringify(err));
+      }
     });
+
+    connection.end();
+
 
 };
