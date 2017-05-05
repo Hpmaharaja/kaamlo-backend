@@ -1,5 +1,8 @@
 'use strict';
 
+
+exports.handler = (event, context, callback) => {
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'kaamlo-db.cczywhkujcku.us-west-2.rds.amazonaws.com',
@@ -10,7 +13,6 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-exports.handler = (event, context, callback) => {
 
     connection.query('INSERT INTO attendeeInfo (eventId, userId) VALUES(?,?)',[ event.eventId, event.userId ], function(err, rows, fields) {
       if (!err) {

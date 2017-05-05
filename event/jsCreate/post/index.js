@@ -1,4 +1,7 @@
 'use strict';
+
+exports.handler = (event, context, callback) => {
+
 // Generate a v4 UUID (random)
 const uuidV4 = require('uuid/v4');
 
@@ -11,8 +14,6 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
-
-exports.handler = (event, context, callback) => {
 
     connection.query('INSERT INTO eventInfo (eventId, eventName, startTime, endTime, goal, eventType, locationLat, locationLong, locationName) VALUES (?,?,?,?,?,?,?,?,?)',
     [ uuidV4(), event.eventName, event.startTime, event.endTime, event.goal, event.eventType, event.locationLat, event.locationLong, event.locationName ], function(err, rows, fields) {

@@ -1,5 +1,7 @@
 'use strict';
 
+exports.handler = (event, context, callback) => {
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'kaamlo-db.cczywhkujcku.us-west-2.rds.amazonaws.com',
@@ -10,9 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-exports.handler = (event, context, callback) => {
-
-    connection.query('SELECT * FROM eventInfo WHERE eventId=?',[event.eventId], function(err, rows, fields) {
+    connection.query('SELECT * FROM eventInfo', function(err, rows, fields) {
       if (!err) {
         // console.log('The solution is: ', rows);
         console.log('Successfully inserted into eventInfo!');
