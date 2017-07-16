@@ -1,4 +1,0 @@
-AWS Credentials
-
-Username: tech@kaamlo.space
-Password: Radhe108!
